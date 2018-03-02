@@ -3,10 +3,9 @@ defmodule Souq.Repo.Migrations.CreateTests do
 
   def change do
     create table(:tests) do
-      add :username, :string
+      add(:username, :string)
 
       timestamps()
     end
-
   end
 end

@@ -6,7 +6,7 @@ defmodule SouqWeb.UserController do
 
   action_fallback(SouqWeb.FallbackController)
 
-  def index(conn , _params) do
+  def index(conn, _params) do
     users = Accounts.list_users()
     render(conn, :index, users: users)
   end
@@ -24,15 +24,17 @@ defmodule SouqWeb.UserController do
       |> render("show.json", user: user)
     end
   end
+
   def create(%Plug.Conn{private: %{phoenix_format: "html"}} = conn, %{"user" => user_params}) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: user_path(conn, :show, user))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
-    end    
+    end
   end
 
   def show(conn, %{"id" => id}) do
@@ -46,14 +48,21 @@ defmodule SouqWeb.UserController do
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update(%Plug.Conn{private: %{phoenix_format: "json"}} = conn, %{"id" => id, "user" => user_params}) do
+  def update(%Plug.Conn{private: %{phoenix_format: "json"}} = conn, %{
+        "id" => id,
+        "user" => user_params
+      }) do
     user = Accounts.get_user!(id)
 
     with {:ok, %User{} = user} <- Accounts.update_user(user, user_params) do
       render(conn, "show.json", user: user)
     end
   end
-  def update(%Plug.Conn{private: %{phoenix_format: "html"}} = conn, %{"id" => id, "user" => user_params}) do
+
+  def update(%Plug.Conn{private: %{phoenix_format: "html"}} = conn, %{
+        "id" => id,
+        "user" => user_params
+      }) do
     user = Accounts.get_user!(id)
 
     case Accounts.update_user(user, user_params) do
@@ -61,6 +70,7 @@ defmodule SouqWeb.UserController do
         conn
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: user_path(conn, :show, user))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -73,6 +83,7 @@ defmodule SouqWeb.UserController do
       send_resp(conn, :no_content, "")
     end
   end
+
   def delete(%Plug.Conn{private: %{phoenix_format: "html"}} = conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     {:ok, _user} = Accounts.delete_user(user)
@@ -81,5 +92,4 @@ defmodule SouqWeb.UserController do
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
   end
-
 end

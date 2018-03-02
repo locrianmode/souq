@@ -42,7 +42,7 @@ defmodule Souq.Mixfile do
       {:gettext, "~> 0.11"},
       {:phoenix_swagger, "~> 0.7"},
       {:ecto_enum, "~> 1.0"},
-      {:absinthe, "~> 1.4.0"},      
+      {:absinthe, "~> 1.4.0"},
       {:cowboy, "~> 1.0"},
       {:bamboo, "~> 1.0.0-rc.2"},
       {:bamboo_smtp, "~> 1.5.0-rc.2"},

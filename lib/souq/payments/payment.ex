@@ -8,4 +8,10 @@ defmodule Souq.Payments.Payment do
 
     timestamps()
   end
+
+  def changeset(%__MODULE__{} = payment, attrs) do
+    payment
+    |> cast(attrs, [])
+    |> validate_required([])
+  end
 end

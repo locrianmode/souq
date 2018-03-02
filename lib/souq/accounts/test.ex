@@ -3,9 +3,7 @@ defmodule Souq.Accounts.Test do
   import Ecto.Changeset
   alias Souq.Accounts.Test
 
-
   schema "tests" do
-
     timestamps()
   end
 

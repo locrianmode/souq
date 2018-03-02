@@ -20,6 +20,7 @@ defmodule SouqWeb.TestController do
         conn
         |> put_flash(:info, "Test created successfully.")
         |> redirect(to: test_path(conn, :show, test))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -44,6 +45,7 @@ defmodule SouqWeb.TestController do
         conn
         |> put_flash(:info, "Test updated successfully.")
         |> redirect(to: test_path(conn, :show, test))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", test: test, changeset: changeset)
     end
