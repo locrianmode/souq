@@ -31,6 +31,7 @@ config :souq, SouqWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :souq, SouqWeb.Endpoint,
+  url: [host: "localhost", port: 8000],
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -46,6 +47,16 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
+
+config :souq, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      # phoenix routes will be converted to swagger paths
+      router: SouqWeb.Router,
+      # (optional) endpoint config used to set host, port and https schemes.
+      endpoint: SouqWeb.Endpoint
+    ]
+  }
 
 # Configure your database
 config :souq, Souq.Repo,

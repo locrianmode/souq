@@ -3,9 +3,9 @@ defmodule Souq.Payments.Payment do
   import Ecto.Changeset
   alias Souq.Orders.Order
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "payments" do
     belongs_to(:order, Order)
-
     timestamps()
   end
 

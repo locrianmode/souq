@@ -7,7 +7,7 @@ defmodule Souq.Mixfile do
       version: "0.0.1",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix, :gettext, :phoenix_swagger] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -40,13 +40,17 @@ defmodule Souq.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:phoenix_swagger, "~> 0.7"},
+      {:phoenix_swagger, "~> 0.8"},
       {:ecto_enum, "~> 1.0"},
       {:absinthe, "~> 1.4.0"},
       {:cowboy, "~> 1.0"},
       {:bamboo, "~> 1.0.0-rc.2"},
       {:bamboo_smtp, "~> 1.5.0-rc.2"},
       {:guardian, "~> 1.0"},
+      {:gringotts, "~> 1.0"},
+      {:ex_money, "~> 2.3.0"},
+      {:pigeon, "~> 1.1.6"},
+      {:kadabra, "~> 0.3.7"},
       {:distillery, "~> 1.5", runtime: false}
     ]
   end

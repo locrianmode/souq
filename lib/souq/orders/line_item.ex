@@ -3,6 +3,7 @@ defmodule Souq.Orders.LineItem do
   import Ecto.Changeset
   alias Souq.Orders.Order
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "line_items" do
     belongs_to(:order, Order)
 

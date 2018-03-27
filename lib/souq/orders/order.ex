@@ -4,6 +4,7 @@ defmodule Souq.Orders.Order do
   alias Souq.Orders.LineItem
   alias Souq.Payments.Payment
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "orders" do
     has_many(:line_items, LineItem)
     has_many(:payments, Payment)

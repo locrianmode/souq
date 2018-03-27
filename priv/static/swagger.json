@@ -1,0 +1,85 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/api/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "",
+        "responses": {
+          "422": {
+            "description": ""
+          },
+          "201": {
+            "description": "Success"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "required": false,
+            "name": "data",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "operationId": "SouqWeb.UserController.create",
+        "description": ""
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "",
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Users"
+            },
+            "description": "Success"
+          }
+        },
+        "parameters": [],
+        "operationId": "SouqWeb.UserController.index",
+        "description": ""
+      }
+    }
+  },
+  "info": {
+    "version": "0.0.1",
+    "title": "Souq"
+  },
+  "host": "localhost:8000",
+  "definitions": {
+    "Users": {
+      "type": "array",
+      "title": "Users",
+      "items": {
+        "$ref": "#/definitions/User"
+      },
+      "description": ""
+    },
+    "User": {
+      "type": "object",
+      "title": "User",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "user": {
+          "username": "joe.chang",
+          "name": "Joe Chang"
+        }
+      },
+      "description": ""
+    }
+  }
+}

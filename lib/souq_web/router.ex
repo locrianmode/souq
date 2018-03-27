@@ -26,4 +26,26 @@ defmodule SouqWeb.Router do
 
     resources("/users", UserController)
   end
+
+  scope "/api/swagger" do
+    forward("/", PhoenixSwagger.Plug.SwaggerUI, otp_app: :souq, swagger_file: "swagger.json")
+  end
+
+  def swagger_info do
+    version =
+      case :application.get_key(:souq, :vsn) do
+        {:ok, version} ->
+          version
+
+        :undefined ->
+          Mix.Project.config()[:version]
+      end
+
+    %{
+      info: %{
+        version: "#{version}",
+        title: "Souq"
+      }
+    }
+  end
 end

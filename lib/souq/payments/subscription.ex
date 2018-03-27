@@ -2,9 +2,10 @@ defmodule Souq.Payments.Subscription do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "subscriptions" do
-    field(:start_date, :datetime)
-    field(:end_date, :datetime)
+    field(:start_date, :utc_datetime)
+    field(:end_date, :utc_datetime)
     field(:status, SubscriptionStatus)
     timestamps()
   end
