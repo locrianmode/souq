@@ -1,6 +1,6 @@
-defmodule Souq.Orders do
+defmodule Souq.Fulfillment do
   @moduledoc """
-  Orders context
+  Fulfillment context
   """
 
   import Ecto.Query, warn: false
